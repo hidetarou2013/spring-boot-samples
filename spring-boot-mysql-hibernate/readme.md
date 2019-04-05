@@ -1,6 +1,6 @@
 ## Use a MySQL database in a Spring Boot Web Application through Hibernate
 
-See here for more informations: 
+See here for more informations:
 http://blog.netgloo.com/2014/08/17/use-mysql-database-in-a-spring-boot-web-application-through-hibernate/
 
 ### Usage
@@ -8,7 +8,7 @@ http://blog.netgloo.com/2014/08/17/use-mysql-database-in-a-spring-boot-web-appli
 - Run the application and go on http://localhost:8080/
 - Use the following urls to invoke controllers methods and see the interactions
   with the database:
-    * `/user/save?email=[email]&name=[name]`: create a new user with an 
+    * `/user/save?email=[email]&name=[name]`: create a new user with an
       auto-generated id and email and name as passed values.
     * `/user/delete?id=[id]`: delete the user with the passed id.
     * `/user/get-by-email?email=[email]`: retrieve the id for the user with the
@@ -20,6 +20,14 @@ http://blog.netgloo.com/2014/08/17/use-mysql-database-in-a-spring-boot-web-appli
 
 Open the `application.properties` file and set your own configurations for the
 database connection.
+
+#### dockerRunMySQL
+
+containar_name: mysql-netgloo-blog
+
+```
+docker run --name mysql-netgloo-blog -p 8889:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=netgloo_blog -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
 
 #### Prerequisites
 
@@ -35,3 +43,16 @@ Go on the project's root folder, then type:
 #### From Eclipse (Spring Tool Suite)
 
 Import as *Existing Maven Project* and run it as *Spring Boot App*.
+
+#### App url
+
+http://localhost:8080
+
+#### sample acccess: get-by-email
+
+```
+http://localhost:8080/user/get-by-email?email=tanaka@hoge.com
+```
+Response:
+
+The user id is: 1
