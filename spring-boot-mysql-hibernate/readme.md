@@ -29,6 +29,23 @@ containar_name: mysql-netgloo-blog
 docker run --name mysql-netgloo-blog -p 8889:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=netgloo_blog -d mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
+#### DDL: create table users
+
+```sql
+create table users (
+  id int(11) auto_increment not null comment 'id'
+  , name varchar(80) comment 'name'
+  , email varchar(80) comment 'email'
+  , constraint users_PKC primary key (id)
+) comment 'users' ;
+```
+
+#### DML: INSERT INTO netgloo_blog.users
+
+```sql
+INSERT INTO netgloo_blog.users(id, email, name) VALUES (1, 'tanaka@hoge.com', 'tanaka')
+```
+
 #### Prerequisites
 
 - Java 7
@@ -55,4 +72,6 @@ http://localhost:8080/user/get-by-email?email=tanaka@hoge.com
 ```
 Response:
 
+```
 The user id is: 1
+```
